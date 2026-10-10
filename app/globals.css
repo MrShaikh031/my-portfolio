@@ -1,26 +1,214 @@
 @import "tailwindcss";
 
+/* ========================================
+   1. THEME VARIABLES
+======================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+
+  --background: #090a0c;
+  --foreground: #f4f5f7;
+  --muted: #969da8;
+
+  --surface: #111318;
+  --card: #15181d;
+  --border: #252a31;
+
+  --accent: #5ce6a8;
+  --accent-dark: #163d2d;
+
+  --navbar-bg: rgba(9, 10, 12, 0.88);
+  --selection-bg: #5ce6a8;
+  --selection-text: #090a0c;
+
+  --shadow-color: rgba(0, 0, 0, 0.2);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ========================================
+   2. LIGHT THEME
+======================================== */
+
+html.light {
+  color-scheme: light;
+
+  --background: #f5f7f6;
+  --foreground: #101412;
+  --muted: #5f6863;
+
+  --surface: #ffffff;
+  --card: #ffffff;
+  --border: #dce3df;
+
+  --accent: #168a57;
+  --accent-dark: #dff5e9;
+
+  --navbar-bg: rgba(245, 247, 246, 0.88);
+  --selection-bg: #168a57;
+  --selection-text: #ffffff;
+
+  --shadow-color: rgba(16, 20, 18, 0.08);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ========================================
+   3. RESET & BASE STYLES
+======================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 4px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+  scroll-padding-block-start: 7rem;
 }
 
 body {
+  min-height: 100vh;
+  overflow-x: hidden;
+
   background: var(--background);
   color: var(--foreground);
+
   font-family: Arial, Helvetica, sans-serif;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Keep page content clear of the fixed navbar */
+main {
+  scroll-margin-top: 7rem;
+}
+
+/* Ensure page headings remain readable below the navbar */
+main > section:first-child,
+main > div > section:first-child {
+  scroll-margin-top: 30px;
+}
+
+/* Theme transition for common surfaces */
+
+html,
+body {
+  background-color: var(--background);
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* ========================================
+   4. PREMIUM ANIMATIONS
+======================================== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out both;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+/* ========================================
+   5. ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
