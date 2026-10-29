@@ -4,38 +4,37 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: {
-    default: "Shaikh Tohid | Data Science & Web Development",
-    template: "%s | Shaikh Tohid",
-  },
-  description:
-    "Explore Shaikh Tohid's portfolio, technical skills, data science learning projects, and web development work.",
-  applicationName: "Shaikh Tohid Portfolio",
-  openGraph: {
-    title: "Shaikh Tohid | Data Science & Web Development",
-    description:
-      "A portfolio showcasing Shaikh Tohid's work and learning journey in data science, web development, and creative technology.",
-    type: "website",
-    locale: "en_IN",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+title: {
+default: "Shaikh Tohid | Data Science & Web Development",
+template: "%s | Shaikh Tohid",
+},
+description:
+"Explore Shaikh Tohid's portfolio, technical skills, data science learning projects, and web development work.",
+applicationName: "Shaikh Tohid Portfolio",
+openGraph: {
+title: "Shaikh Tohid | Data Science & Web Development",
+description:
+"A portfolio showcasing Shaikh Tohid's work and learning journey in data science, web development, and creative technology.",
+type: "website",
+locale: "en_IN",
+},
+robots: {
+index: true,
+follow: true,
+},
+
+// Google Search Console verification
+verification: {
+google: "olhggHsAAq6wNbpS9P_hNaQ3sw_GFpxkOdwNw2MLNjU",
+},
 };
 
 export default function RootLayout({
-  children,
+children,
 }: Readonly<{
-  children: React.ReactNode;
+children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body>
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
-    </html>
-  );
+return ( <html lang="en"> <body> <Navbar />
+{children} <Footer /> </body> </html>
+);
 }
